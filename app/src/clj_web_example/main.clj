@@ -1,7 +1,8 @@
 (ns clj-web-example.main
-  (:gen-class))
+  (:gen-class)
+  (:require [clj-web-example.system :as system]
+            [com.stuartsierra.component :as component]))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (component/start (system/system (first args))))
