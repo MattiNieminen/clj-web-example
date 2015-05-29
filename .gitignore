@@ -9,3 +9,6 @@ app/.lein-*
 app/.nrepl-port
 .hgignore
 .hg/
+app/.classpath
+app/.gitignore
+app/.project
