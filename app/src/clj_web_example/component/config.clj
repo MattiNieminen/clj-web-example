@@ -1,7 +1,8 @@
 (ns clj-web-example.component.config
   (:require [potpuri.core :as potpuri]
             [clojure.java.io :as io]
-            [com.stuartsierra.component :as component]))
+            [com.stuartsierra.component :as component]
+            [clojure.tools.logging :as log]))
 
 (defn import-config
   [profile]
@@ -14,7 +15,7 @@
   component/Lifecycle
   
   (start [this]
-    (println "Loading configuration with profile" profile)
+    (log/info "Loading configuration with profile" profile)
     (assoc this :loaded (import-config profile)))
   
   (stop [this]
