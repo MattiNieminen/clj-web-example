@@ -1,4 +1,4 @@
-(ns clj-web-example.core
+(ns clj-web-example.main
   (:gen-class))
 
 (defn -main
