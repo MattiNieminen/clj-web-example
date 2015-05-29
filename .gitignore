@@ -1,0 +1,11 @@
+app/target
+app/classes
+app/checkouts
+app/pom.xml
+app/pom.xml.asc
+*.jar
+*.class
+app/.lein-*
+app/.nrepl-port
+.hgignore
+.hg/
