@@ -9,5 +9,5 @@
 (defn navigation
   []
   [:div#navigation
-   [navigation-link (tr :messages) "#messages"]
-   [navigation-link (tr :new-message) "#messages/new"]])
+   [navigation-link (tr :messages) "#"]
+   [navigation-link (tr :new-message) "#new"]])
