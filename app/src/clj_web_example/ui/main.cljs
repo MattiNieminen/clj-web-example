@@ -1,9 +1,10 @@
 (ns ^:figwheel-always clj-web-example.ui.main
-  (:require [reagent.core :as reagent]))
+  (:require [clj-web-example.localization :refer [tr]]
+            [reagent.core :as reagent]))
 
 (defn simple-component []
   [:div
-   [:h1 "Hello World!"]])
+   [:h1 (tr :hello)]])
 
 (defn init!
   []
