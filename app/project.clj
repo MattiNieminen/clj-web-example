@@ -8,7 +8,8 @@
                  [ch.qos.logback/logback-classic "1.1.3"]
                  [com.stuartsierra/component "0.2.3"]
                  [metosin/potpuri "0.2.2"]
-                 [http-kit "2.1.19"]]
+                 [http-kit "2.1.19"]
+                 [metosin/compojure-api "0.21.0"]]
   :main ^:skip-aot clj-web-example.main
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
