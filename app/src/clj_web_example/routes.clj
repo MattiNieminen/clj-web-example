@@ -14,7 +14,7 @@
   
   (GET* "/" []
     :no-doc true
-    index/index-page)
+    (index/index-page))
   
   (route/resources "/static")
   

@@ -3,7 +3,17 @@
             [hiccup.page :as page])
   (:import [org.apache.commons.codec.digest DigestUtils]))
 
-(def index-page
+(defn resource-with-checksum
+  [resource-name]
+  (str "static/" resource-name "?checksum="
+       (some->
+         (str "public/" resource-name)
+         (io/resource)
+         (io/input-stream)
+         (DigestUtils/md5Hex))))
+
+(defn index-page
+  []
   (page/html5
     [:head
      [:title "clj-web-example"]
@@ -13,4 +23,4 @@
              :content "width=device-width, initial-scale=1.0"}]]
     [:body
      [:div#app]
-     (page/include-js "/static/js/main.js")]))
+     (page/include-js (resource-with-checksum "js/main.js"))]))
