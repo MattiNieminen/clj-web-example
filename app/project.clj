@@ -18,12 +18,19 @@
                  [secretary "1.2.3"]]
   :main ^:skip-aot clj-web-example.main
   :target-path "target/%s"
-  :profiles {:dev {:resource-paths ["target/dev"]}
+  :profiles {:dev {:resource-paths ["target/dev"]
+                   :less {:target-path "target/dev/public/css"}}
              :deploy {:resource-paths ["target/deploy"]
+                      :less {:target-path "target/deploy/public/css"}
                       :aot :all}}
   :plugins [[lein-cljsbuild "1.0.6"]
             [lein-figwheel "0.3.3"]
+            [deraen/lein-less4j "0.2.1"]
             [lein-pdo "0.1.1"]]
+  :less {:source-paths ["less"]
+         :source-map true
+         :compression true}
+  :figwheel {:css-dirs ["target/dev/public/css"]}
   :cljsbuild {:builds [{:id "dev"
                         :source-paths ["src/"]
                         :figwheel true
@@ -41,6 +48,7 @@
                                    :pretty-print false}}]}
   :auto-clean false
   :uberjar-name "clj-web-example.jar"
-  :aliases {"develop" ["do" "clean" ["pdo" ["figwheel"] ["run"]]]
-            "build" ["with-profile" "deploy"
-                     "do" "clean" ["cljsbuild" "once" "deploy"] "uberjar"]})
+  :aliases {"develop" ["do" "clean"
+                       ["pdo" ["less4j" "auto"] ["figwheel"] ["run"]]]
+            "build" ["with-profile" "deploy" "do" "clean"
+                     ["less4j" "once"]["cljsbuild" "once" "deploy"] "uberjar"]})
