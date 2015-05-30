@@ -12,5 +12,5 @@
      [:meta {:name "viewport"
              :content "width=device-width, initial-scale=1.0"}]]
     [:body
-     [:div#app
-      [:h1 "Hello World!"]]]))
+     [:div#app]
+     (page/include-js "/static/js/main.js")]))

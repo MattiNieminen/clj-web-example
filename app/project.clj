@@ -18,4 +18,29 @@
                  [secretary "1.2.3"]]
   :main ^:skip-aot clj-web-example.main
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:dev {:resource-paths ["target/dev"]}
+             :deploy {:resource-paths ["target/deploy"]
+                      :aot :all}}
+  :plugins [[lein-cljsbuild "1.0.6"]
+            [lein-figwheel "0.3.3"]
+            [lein-pdo "0.1.1"]]
+  :cljsbuild {:builds [{:id "dev"
+                        :source-paths ["src/"]
+                        :figwheel true
+                        :compiler {:main clj-web-example.ui.main
+                                   :optimizations :none
+                                   :output-to "target/dev/public/js/main.js"
+                                   :output-dir "target/dev/public/js"
+                                   :asset-path "/static/js"}}
+                       {:id "deploy"
+                        :source-paths ["src/"]
+                        :compiler {:main clj-web-example-ui.main
+                                   :optimizations :advanced
+                                   :output-to "target/deploy/public/js/main.js"
+                                   :output-dir "target/deploy/public/js"
+                                   :pretty-print false}}]}
+  :auto-clean false
+  :uberjar-name "clj-web-example.jar"
+  :aliases {"develop" ["do" "clean" ["pdo" ["figwheel"] ["run"]]]
+            "build" ["with-profile" "deploy"
+                     "do" "clean" ["cljsbuild" "once" "deploy"] "uberjar"]})
