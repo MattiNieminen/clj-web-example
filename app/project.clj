@@ -14,7 +14,8 @@
                  [prismatic/schema "0.4.3"]
                  [hiccup "1.0.5"]
                  [org.clojure/clojurescript "0.0-3269"]
-                 [reagent "0.5.0"]]
+                 [reagent "0.5.0"]
+                 [secretary "1.2.3"]]
   :main ^:skip-aot clj-web-example.main
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
