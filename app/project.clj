@@ -11,7 +11,8 @@
                  [http-kit "2.1.19"]
                  [metosin/compojure-api "0.21.0"]
                  [metosin/ring-swagger-ui "2.1.5-M2"]
-                 [prismatic/schema "0.4.3"]]
+                 [prismatic/schema "0.4.3"]
+                 [hiccup "1.0.5"]]
   :main ^:skip-aot clj-web-example.main
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
