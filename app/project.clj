@@ -15,7 +15,8 @@
                  [hiccup "1.0.5"]
                  [org.clojure/clojurescript "0.0-3269"]
                  [reagent "0.5.0"]
-                 [secretary "1.2.3"]]
+                 [secretary "1.2.3"]
+                 [com.novemberain/monger "2.0.1"]]
   :main ^:skip-aot clj-web-example.main
   :target-path "target/%s"
   :profiles {:dev {:resource-paths ["target/dev"]
