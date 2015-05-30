@@ -1,1 +1,4 @@
-{:http {:port 8080}}
+{:http {:port 8080}
+ :mongodb {:connection {:host "localhost"
+                        :port 27017}
+           :database "clj-web-example"}}
