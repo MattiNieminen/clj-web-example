@@ -2,6 +2,7 @@
   (:require [compojure.api.sweet :refer :all]
             [schema.core :as s]
             [clj-web-example.ui.index :as index]
+            [compojure.route :as route]
             [ring.util.response :as response]))
 
 (def Message {:body s/Str})
@@ -14,6 +15,8 @@
   (GET* "/" []
     :no-doc true
     index/index-page)
+  
+  (route/resources "/static")
   
   (context* "/api" []
     :tags ["API"]
