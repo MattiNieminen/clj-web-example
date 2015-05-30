@@ -12,5 +12,4 @@ app/.nrepl-port
 app/.classpath
 app/.gitignore
 app/.project
-app/clj-web-example-logs
-app/figwheel_server.log
+app/clj-app-logs

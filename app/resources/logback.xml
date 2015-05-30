@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-  <property name="LOGGING_DIR" value="./clj-web-example-logs" />
+  <property name="LOGGING_DIR" value="./clj-app-logs" />
 
   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${LOGGING_DIR}/app.log</file>
@@ -17,9 +17,7 @@
       </timeBasedFileNamingAndTriggeringPolicy>
     </rollingPolicy>
   </appender>
-
-  <logger name="clj-web-example" level="debug" />
-
+  
   <root level="info">
     <appender-ref ref="FILE" />
   </root>

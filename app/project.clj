@@ -30,7 +30,8 @@
   :less {:source-paths ["less"]
          :source-map true
          :compression true}
-  :figwheel {:css-dirs ["target/dev/public/css"]}
+  :figwheel {:css-dirs ["target/dev/public/css"]
+             :server-logfile "clj-app-logs/figwheel_server.log"}
   :cljsbuild {:builds [{:id "dev"
                         :source-paths ["src/"]
                         :figwheel true
