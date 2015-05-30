@@ -16,7 +16,8 @@
                  [org.clojure/clojurescript "0.0-3269"]
                  [reagent "0.5.0"]
                  [secretary "1.2.3"]
-                 [com.novemberain/monger "2.0.1"]]
+                 [com.novemberain/monger "2.0.1"]
+                 [clj-time "0.9.0"]]
   :main ^:skip-aot clj-web-example.main
   :target-path "target/%s"
   :profiles {:dev {:resource-paths ["target/dev"]
