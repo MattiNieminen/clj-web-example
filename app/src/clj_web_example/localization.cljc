@@ -1,6 +1,11 @@
 (ns clj-web-example.localization)
 
-(def dictionary {:hello "Hello World!"})
+(def dictionary {:title "Hello World!"
+                 :messages "Messages"
+                 :new-message "New message"
+                 :sender "Sender"
+                 :message "Message"
+                 :submit "Submit"})
 
 (defn tr
   [key]
