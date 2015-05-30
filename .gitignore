@@ -13,3 +13,4 @@ app/.classpath
 app/.gitignore
 app/.project
 app/clj-app-logs
+.vagrant
