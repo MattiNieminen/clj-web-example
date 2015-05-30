@@ -3,4 +3,7 @@
 
 Vagrant.configure(2) do |config|
   config.vm.box = "chef/centos-7.0"
+  config.vm.provision "docker"
+  config.vm.provision "shell", inline:
+  "ps aux | grep 'sshd:' | awk '{print $2}' | xargs kill"
 end
