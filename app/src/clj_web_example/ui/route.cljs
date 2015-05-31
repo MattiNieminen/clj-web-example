@@ -29,3 +29,10 @@
   []
   (set! js/window.onhashchange update-route!)
   (update-route! nil))
+
+;
+; For modifying the location.hash
+;
+(defn modify-location-hash!
+  [hash]
+  (set! js/location.hash hash))
