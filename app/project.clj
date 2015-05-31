@@ -46,7 +46,7 @@
                                    :asset-path "/static/js"}}
                        {:id "deploy"
                         :source-paths ["src/"]
-                        :compiler {:main clj-web-example-ui.main
+                        :compiler {:main clj-web-example.ui.main
                                    :optimizations :advanced
                                    :output-to "target/deploy/public/js/main.js"
                                    :output-dir "target/deploy/public/js"
