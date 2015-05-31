@@ -29,6 +29,9 @@
    [atom-input (tr :sender) new-message :sender]
    [atom-input (tr :message) new-message :body]
    [:button {:type "button"
+             :disabled (or
+                         (empty? (:sender @new-message))
+                         (empty? (:body @new-message)))
              :on-click send-message}
     (tr :submit)]])
 
