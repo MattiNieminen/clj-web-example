@@ -17,7 +17,8 @@
                  [reagent "0.5.0"]
                  [secretary "1.2.3"]
                  [com.novemberain/monger "2.0.1"]
-                 [clj-time "0.9.0"]]
+                 [clj-time "0.9.0"]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
   :main ^:skip-aot clj-web-example.main
   :target-path "target/%s"
   :profiles {:dev {:resource-paths ["target/dev"]
