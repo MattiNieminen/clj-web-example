@@ -1,0 +1,2 @@
+{:http {:port 8181}
+ :mongodb {:database "clj-web-example-test"}}
