@@ -9,8 +9,9 @@ app/.lein-*
 app/.nrepl-port
 .hgignore
 .hg/
+app/bin
 app/.classpath
-app/.gitignore
 app/.project
+app/.settings
 app/clj-app-logs
 .vagrant
