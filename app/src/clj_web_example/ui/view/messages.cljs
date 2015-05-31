@@ -8,7 +8,7 @@
 
 (defn get-messages
   []
-  (utils/http-get "/api/messages" #(reset! messages-state (:body %))))
+  (utils/http-get! "/api/messages" #(reset! messages-state (:body %))))
 
 (defn message
   [msg]
