@@ -3,9 +3,7 @@
             [schema.core :as s]
             [clj-web-example.ui.index :as index]
             [compojure.route :as route]
-            [ring.util.response :as response]))
-
-(def Message {:body s/Str})
+            [clj-web-example.message-api :as message-api]))
 
 (defapi app
   (swagger-ui "/swagger-ui")
@@ -21,8 +19,13 @@
   (context* "/api" []
     :tags ["API"]
     
-    (POST* "/echo" []
-      :summary "Echoes the given message."
-      :return  (s/maybe Message)
-      :body    [message (s/maybe Message)]
-      (response/response message))))
+    (GET* "/messages" []
+      :summary "Gets messages from MongoDB."
+      :return  [message-api/SavableMessage]
+      message-api/get-messages)
+    
+    (POST* "/messages" []
+      :summary "Saves a message to MongoDB."
+      :body [message message-api/Message]
+      :return message-api/SavableMessage
+      message-api/save-message)))
