@@ -21,8 +21,8 @@
 (defn save-message
   [{message :body-params
     database :database}]
-    (response/response
-      (mc/insert-and-return
-        database
-        "messages"
-        ((coerce/coercer SavableMessage message-matcher) message))))
+  (response/response
+    (mc/insert-and-return
+      database
+      "messages"
+      ((coerce/coercer SavableMessage message-matcher) message))))
