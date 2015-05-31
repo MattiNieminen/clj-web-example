@@ -33,6 +33,20 @@ lein build
 lein test
 ```
 
+## Using this example as a starting point
+
+1. Fork the repository
+2. Install Counterclockwise
+3. Use file search to replace clj-web-example with [your-project-name] in the
+whole project.
+4. Use Refactor -> Rename to clj-web-example namespace. Tick
+"Rename subpackages"
+5. Use Counterclockwise or some other tool to replace clj-web-example to
+[your-project-name]
+6. Review project.clj
+7. Start editing the app itself (routes, api functions, reagent views,
+  localizations etc.)
+
 ## License
 
 Copyright © 2015 Matti Nieminen
