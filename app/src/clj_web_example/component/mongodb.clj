@@ -1,7 +1,8 @@
 (ns clj-web-example.component.mongodb
   (:require [com.stuartsierra.component :as component]
             [clojure.tools.logging :as log]
-            [monger.core :as mg]))
+            [monger.core :as mg]
+            [monger.joda-time]))
 
 (defrecord MongoDb [config connection]
   component/Lifecycle
@@ -14,11 +15,11 @@
                 (str (:host connection-config) ":" (:port connection-config)))
       (assoc this
              :connection new-connection
-             :db (mg/get-db new-connection (:database mongodb-config)))))
+             :database (mg/get-db new-connection (:database mongodb-config)))))
   
   (stop [this]
     (when connection (mg/disconnect connection))
-    (dissoc this :connection :db)))
+    (dissoc this :connection :database)))
 
 (defn new-mongodb
   []
