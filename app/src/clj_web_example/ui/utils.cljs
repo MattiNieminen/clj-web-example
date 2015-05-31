@@ -8,3 +8,9 @@
   (go
     (let [response (<! (http/get url))]
       (f response))))
+
+(defn http-post
+  [url body f]
+  (go
+    (let [response (<! (http/post url {:edn-params body}))]
+      (f response))))
