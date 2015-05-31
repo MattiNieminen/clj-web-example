@@ -18,6 +18,9 @@
 (secretary/defroute "/new" []
   (reset! route {:id "new-message"}))
 
+(secretary/defroute "*" []
+  (reset! route nil))
+
 ;
 ; Listener
 ;
