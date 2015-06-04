@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker --help > /dev/null 2>&1
+sudo docker --help > /dev/null 2>&1
 
 if [ $? != 0 ]; then
   printf "Docker must be installed before running this script!\n"
@@ -8,26 +8,32 @@ if [ $? != 0 ]; then
 fi
 
 
-printf "Dockerizing MongoDB..."
-PS="$(docker ps -a | grep mongo)"
+printf "Building uberjar...\n"
+cd app
+lein build
+cd ..
+
+
+printf "Dockerizing MongoDB...\n"
+PS="$(sudo docker ps -a | grep mongo)"
 
 if [ ! -z "$PS" ]; then
-  docker stop mongo; docker rm mongo
+  sudo docker stop mongo; sudo docker rm mongo
 fi
 
-mkdir -p /opt/docker/mongo_volume
-docker run --name mongo -v /opt/docker/mongo_volume:/data/db/ -d mongo:3
+sudo mkdir -p /opt/docker/mongo_volume
+sudo docker run --name mongo -v /opt/docker/mongo_volume:/data/db/ -d mongo:3
 
 
-printf "Dockerizing Clojure application..."
-PS="$(docker ps -a | grep clj-app)"
+printf "Dockerizing Clojure application...\n"
+PS="$(sudo docker ps -a | grep clj-app)"
 
 if [ ! -z "$PS" ]; then
-  docker stop clj-app; docker rm clj-app
+  sudo docker stop clj-app; sudo docker rm clj-app
 fi
 
-docker build -t clj-app-v1 ./app
-docker run -d -p 80:8080 --name clj-app --link mongo:mongo -d clj-app-v1
+sudo docker build -t clojure/app:v1 ./app
+sudo docker run -d -p 80:8080 --name clj-app --link mongo:mongo -d clojure/app:v1
 
 
 exit 0
