@@ -14,10 +14,12 @@ Docker configurations should probably not be packaged into Leiningen templates.
 
 ## Usage
 
-1. Clone the repository.
-2. Install VirtualBox.
-3. Install Vagrant.
-4. Explore the code by using the following commands in the cloned directory.
+1. Install Git
+2. Install VirtualBox
+3. Install Vagrant
+4. Install Leiningen
+5. Clone the repository
+6. Explore the code by using the following commands in the cloned directory.
 
 ```bash
 # Download, install and run a virtualization environment for MongoDB.
@@ -45,7 +47,23 @@ whole project.
 [your-project-name].
 6. Review project.clj.
 7. Start editing the app itself (routes, api functions, reagent views,
-  localizations etc.).
+  localizations, Dockerfile, etc.).
+
+## Installation to production (uses Docker, so Linux-servers only)
+
+1. Install Git
+2. Install Docker
+3. Install Leiningen (and Java)
+3. As a user that can sudo:
+
+```bash
+git clone https://github.com/MattiNieminen/weather.git
+cd clj-web-example
+chmod a+x os/dockerize.sh
+./os/dockerize.sh
+```
+
+Let me know if you need instructions for production Windows-servers!
 
 ## License
 
