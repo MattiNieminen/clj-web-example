@@ -3,6 +3,7 @@
             [schema.core :as s]
             [clj-web-example.ui.index :as index]
             [compojure.route :as route]
+            [ring.util.response :as response]
             [clj-web-example.message-api :as message-api]))
 
 (defapi app
@@ -19,13 +20,16 @@
   (context* "/api" []
     :tags ["API"]
     
-    (GET* "/messages" []
+    (GET* "/messages" request
       :summary "Gets messages from MongoDB."
       :return  [message-api/SavableMessage]
-      message-api/get-messages)
+      (response/response (message-api/get-messages
+                           (:database request))))
     
-    (POST* "/messages" []
+    (POST* "/messages" request
       :summary "Saves a message to MongoDB."
       :body [message message-api/Message]
       :return message-api/SavableMessage
-      message-api/save-message)))
+      (response/response (message-api/save-message
+                           (:database request)
+                           message)))))

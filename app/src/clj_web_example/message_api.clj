@@ -2,7 +2,6 @@
   (:require [schema.core :as s]
             [clj-web-example.utils :as utils]
             [monger.collection :as mc]
-            [ring.util.response :as response]
             [schema.coerce :as coerce]))
 
 (def Message {:sender s/Str
@@ -15,14 +14,12 @@
   (if (= schema SavableMessage) utils/->savable))
 
 (defn get-messages
-  [{database :database}]
-  (response/response (mc/find-maps database "messages")))
+  [database]
+  (mc/find-maps database "messages"))
 
 (defn save-message
-  [{message :body-params
-    database :database}]
-  (response/response
-    (mc/insert-and-return
-      database
-      "messages"
-      ((coerce/coercer SavableMessage message-matcher) message))))
+  [database message]
+  (mc/insert-and-return
+    database
+    "messages"
+    ((coerce/coercer SavableMessage message-matcher) message)))
