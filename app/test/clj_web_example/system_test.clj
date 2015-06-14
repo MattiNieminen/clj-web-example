@@ -10,8 +10,8 @@
     (is (contains? test-utils/test-system :httpkit)))
   (testing "Config is loaded correctly and merged from multiple files."
     (let [config (:config test-utils/test-system)]
-      (is (= (:profile config) "test"))
-      (is (= (get-in config [:loaded :http :port]) 8181))))
+      (is (= "test" (:profile config)))
+      (is (= 8181 (get-in config [:loaded :http :port])))))
    (testing "MongoDB connection is initialized correctly."
      (let [mongodb (:mongodb test-utils/test-system)]
        (is (contains? mongodb :connection ))

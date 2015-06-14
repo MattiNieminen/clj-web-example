@@ -4,4 +4,4 @@
 
 (deftest tr-test
   (testing "Translations are fetched correctly."
-    (is (= (tr :title) "Hello World!"))))
+    (is (= "Hello World!" (tr :title)))))
