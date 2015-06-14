@@ -1,6 +1,7 @@
 (ns clj-web-example.ui.index
   (:require [clojure.java.io :as io]
-            [hiccup.page :as page])
+            [hiccup.page :as page]
+            [clj-web-example.localization :refer [tr]])
   (:import [org.apache.commons.codec.digest DigestUtils]))
 
 (defn resource-with-checksum
@@ -16,7 +17,7 @@
   []
   (page/html5
     [:head
-     [:title "clj-web-example"]
+     [:title (tr :title)]
      [:meta {:charset "utf-8"}]
      [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge"}]
      [:meta {:name "viewport"
