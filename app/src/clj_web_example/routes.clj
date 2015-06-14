@@ -1,6 +1,5 @@
 (ns clj-web-example.routes
   (:require [compojure.api.sweet :refer :all]
-            [schema.core :as s]
             [clj-web-example.ui.index :as index]
             [compojure.route :as route]
             [ring.util.response :as response]
