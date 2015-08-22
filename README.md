@@ -25,7 +25,15 @@ Docker configurations should probably not be packaged into Leiningen templates.
 # Download, install and run a virtualization environment for MongoDB.
 vagrant up
 
-# Start the application with figwheel
+# Start the application
+cd app
+lein repl
+(go)
+
+# You can reset the backend (server, routes, etc) while in REPL
+(reset)
+
+# Keep figwheel and less4j running during development (in separate terminal)
 lein develop
 
 # Build an uberjar
