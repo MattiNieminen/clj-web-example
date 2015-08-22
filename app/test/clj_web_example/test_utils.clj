@@ -18,7 +18,7 @@
 
 (defn get-database
   []
-  (get-in test-utils/test-system [:mongodb :database]))
+  (get-in test-system [:mongodb :database]))
 
 (defn http-get
   [url]
