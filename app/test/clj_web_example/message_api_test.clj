@@ -4,7 +4,7 @@
             [monger.collection :as mc]
             [clj-web-example.message-api :refer :all]))
 
-(use-fixtures :each test-utils/database-fixture)
+(use-fixtures :each test-utils/system-fixture)
 
 (def sender-1 "Man from another place")
 (def body-1 "Let's rock!")
@@ -18,16 +18,14 @@
 
 (def url "http://localhost:8181/api/messages")
 
-(def database (get-in test-utils/test-system [:mongodb :database]))
-
 (deftest message-api-test
   (testing "Messages can be saved into database."
-    (is (mc/empty? database "messages"))
+    (is (mc/empty? (test-utils/get-database) "messages"))
     (let [response-1 (test-utils/http-post url message-1)
           response-2 (test-utils/http-post url message-2)]
       (is (= 200 (:status response-1)))
       (is (= 200 (:status response-2)))
-      (is (= 2 (mc/count database "messages"))))
+      (is (= 2 (mc/count (test-utils/get-database) "messages"))))
     (let [response (test-utils/http-get url)
           saved-message-1 (first (:body response))
           saved-message-2 (second (:body response))]

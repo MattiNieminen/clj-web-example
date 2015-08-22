@@ -6,12 +6,19 @@
             [org.httpkit.client :as http]
             [clojure.data.json :as json]))
 
-(defonce test-system (component/start (system/system "test" routes/app)))
+(defonce test-system nil)
 
-(defn database-fixture
+(defn system-fixture
   [f]
+  (alter-var-root #'test-system (constantly (system/system "test" routes/app)))
+  (alter-var-root #'test-system component/start)
   (db/drop-db (get-in test-system [:mongodb :database]))
-  (f))
+  (f)
+  (alter-var-root #'test-system (fn [s] (when s (component/stop s)))))
+
+(defn get-database
+  []
+  (get-in test-utils/test-system [:mongodb :database]))
 
 (defn http-get
   [url]

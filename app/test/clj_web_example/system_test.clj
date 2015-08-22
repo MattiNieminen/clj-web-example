@@ -2,6 +2,8 @@
   (:require [clojure.test :refer :all]
             [clj-web-example.test-utils :as test-utils]))
 
+(use-fixtures :each test-utils/system-fixture)
+
 (deftest system-test
   (testing "System contains the required components."
     (is (contains? test-utils/test-system :config))
