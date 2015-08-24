@@ -23,9 +23,12 @@ Docker configurations should probably not be packaged into Leiningen templates.
 
 ```bash
 # Download, install and run a virtualization environment for MongoDB.
+# Takes a while... make sure that Intel Virtualization techonology VT-d is on.
 vagrant up
 
-# Start the application
+# In development, the above command starts MongoDB inside a Docker container
+# running inside a proxy virtual machine. The application should be run at
+# the host machine by running:
 cd app
 lein repl
 (go)
@@ -33,13 +36,15 @@ lein repl
 # You can reset the backend (server, routes, etc) while in REPL
 (reset)
 
-# Keep figwheel and less4j running during development (in separate terminal)
+# Keep figwheel and less4j running during development (in separate terminal).
 lein develop
 
-# Build an uberjar
+# The above command calls ClojureScript compiler, starts Figwheel and the
+# application itself.
+# If you need an uberjar, then run:
 lein build
 
-# Run test
+# Tests are run normally.
 lein test
 ```
 
