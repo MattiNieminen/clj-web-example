@@ -27,8 +27,8 @@ Docker configurations should probably not be packaged into Leiningen templates.
 vagrant up
 
 # In development, the above command starts MongoDB inside a Docker container
-# running inside a proxy virtual machine. The application should be run at
-# the host machine by running:
+# running inside a proxy virtual machine. The application should be run
+# separately at the host machine by running:
 cd app
 lein repl
 (go)
